@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
 
-        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet">
 
     <script src="assets/javascript/games.js"> </script>  
     </head>
@@ -27,8 +27,10 @@
 <p id="numWins">Wins:</p>
 
 <p id="numLosses">Losses:</p>
-<p id="guessLeft">Guess Left:</p>
-<p id="totalGuess">Your Guess So far:</p>
+<p id="guessLeft" > Guess Left:</p>
+
+
+<p id="totalGuessed">Your Guess So far:</p>
 
 
 </div>
@@ -41,9 +43,45 @@
 
 
         
-        <script src="" async defer>
         
-        
+  <script type="text/javascript">
+var psychicChoices = ["a", "b", "c","d", "e", "f","g","h","i","j"]; 
+var yourGuess;
+var numWins=0;
+var numLosses=0;
+var numTrialsRemaining=10;
+var totalGuessed=0;
+document.onkeyup = function (event){
+    var yourGuess = event.key;
+    var psychicThinking = psychicChoices[Math.floor(Math.random() * psychicChoices.length)];
+    for(i=1; i<numTrialsRemaining; i++){
+    if (yourGuess === psychicThinking){
+        numWins++;
+          alert("this is a Win");
+          var wins = document.getElementById("numWins");
+          wins.textContent ="Wins :"+ ""+ numWins;
+
+          totalGuessed++;
+          var totals = document.getElementById("totalGuessed");
+          totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+
+
+    } else{
+        numLosses++;
+          alert("this is a Loss");
+          var losses= document.getElementById("numLosses");
+          losses.textContent ="Losses :" + "" + numLosses;
+
+          totalGuessed++;
+          var totals = document.getElementById("totalGuessed");
+          totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+    }
+
+
+}
+
+}
+ 
         </script>
     </body>
 </html>
