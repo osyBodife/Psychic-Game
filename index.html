@@ -31,7 +31,7 @@
 <p id="guessLeft" > Guess Left:</p>
 
 
-<p id="totalGuessed">Your Guess So far:</p>
+<p id="yourGuesses">Your Guess So far:</p>
 
 
 </div>
@@ -58,6 +58,31 @@ var text = document.getElementById("psychic");
     text.textContent = "Guess what letter I'm thinking of?.";
 document.onkeyup = function (event){
     var yourGuess = event.key;
+    console.log(yourGuess);
+    //create an array to capture your Guesses
+    //the array is empty when trials ==0
+    var yourGuessSoFar=[];
+    var trials=0;
+    var txt;
+    if(yourGuess && numTrialsRemaining>0){
+        //yourGuessSoFar[trials] = document.getElementById("psychic").value;
+        //trials++;
+        for(trials=1; trials<numTrialsRemaining; trials++){
+            txt="Your Guesses So Far :" + yourGuessSoFar[trials] + ",";
+            
+            document.getElementById("yourGuesses").innerHTML = txt;
+
+        }
+        
+ 
+ 
+
+    }
+
+
+
+
+
     var psychicThinking = psychicChoices[Math.floor(Math.random() * psychicChoices.length)];
     if (yourGuess === psychicThinking){
         //this is a win
