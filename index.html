@@ -56,32 +56,21 @@ numRemaining.textContent="Guess Left:"+ ""+ numTrialsRemaining;
 var totalGuessed=0;
 var text = document.getElementById("psychic");
     text.textContent = "Guess what letter I'm thinking of?.";
-document.onkeyup = function (event){
-    var yourGuess = event.key;
-    console.log(yourGuess);
-    //create an array to capture your Guesses
+//create an array to capture your Guesses
     //the array is empty when trials ==0
     var yourGuessSoFar=[];
+    
     var trials=0;
-    var txt;
-    if(yourGuess && numTrialsRemaining>0){
-        //yourGuessSoFar[trials] = document.getElementById("psychic").value;
-        //trials++;
-        for(trials=1; trials<numTrialsRemaining; trials++){
-            txt="Your Guesses So Far :" + yourGuessSoFar[trials] + ",";
-            
-            document.getElementById("yourGuesses").innerHTML = txt;
-
-        }
-        
- 
- 
-
-    }
-
-
-
-
+    var txt;    
+    
+document.onkeyup = function (event){
+    var yourGuess = event.key;
+    //console.log(yourGuess);
+    yourGuessSoFar.push(yourGuess);
+    txt="Your Guesses So Far :" + yourGuessSoFar+ ",";
+    document.getElementById("yourGuesses").innerHTML = txt;
+    
+    
 
     var psychicThinking = psychicChoices[Math.floor(Math.random() * psychicChoices.length)];
     if (yourGuess === psychicThinking){
@@ -95,6 +84,18 @@ document.onkeyup = function (event){
             numTrialsRemaining--;
           var numRemaining =document.getElementById("guessLeft");
           numRemaining.textContent="Guess Left:"+ ""+ numTrialsRemaining;
+          //add to array 
+         // yourGuessSoFar[trials] = document.getElementById("psychic").value;
+          //trials++;
+          
+          
+          
+          //display
+          for(i=0; i<yourGuessSoFar; i++){
+            txt="Your Guesses So Far :" + yourGuessSoFar[i] + ",";
+
+          }
+
 
           //check if wins==10;
           if(numWins==10){
@@ -165,6 +166,7 @@ document.onkeyup = function (event){
             numTrialsRemaining--;
           var numRemaining =document.getElementById("guessLeft");
           numRemaining.textContent="Guess Left:"+ ""+ numTrialsRemaining;
+          
           //check if number of losses==10;
           if(numLosses==10){
               //yes, reset to zero and increment by 1
