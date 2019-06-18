@@ -23,7 +23,8 @@
 
 <div id="wrapper">
 <h2> The Psychic Game</h2>
-<p>Guess what letter I'm thinking of:<input type="text" id="guessLetter" onkeyup="yourGuess()" ></p>
+<div id="psychic"></div>
+
 <p id="numWins">Wins:</p>
 
 <p id="numLosses">Losses:</p>
@@ -51,36 +52,46 @@ var numWins=0;
 var numLosses=0;
 var numTrialsRemaining=10;
 var totalGuessed=0;
+var text = document.getElementById("psychic");
+    text.textContent = "Guess what letter I'm thinking of?.";
 document.onkeyup = function (event){
     var yourGuess = event.key;
     var psychicThinking = psychicChoices[Math.floor(Math.random() * psychicChoices.length)];
-    for(i=1; i<numTrialsRemaining; i++){
+    //for(i=1; i<numTrialsRemaining; i--){
     if (yourGuess === psychicThinking){
         numWins++;
-          alert("this is a Win");
+          
           var wins = document.getElementById("numWins");
           wins.textContent ="Wins :"+ ""+ numWins;
 
-          totalGuessed++;
-          var totals = document.getElementById("totalGuessed");
-          totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+          //totalGuessed++;
+          //var totals = document.getElementById("totalGuessed");
+          //totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+
+          numTrialsRemaining--;
+          var numRemaining =document.getElementById("guessLeft");
+          numRemaining.textContent="Guess Left:"+ ""+ numTrialsRemaining;
 
 
     } else{
         numLosses++;
-          alert("this is a Loss");
+         
           var losses= document.getElementById("numLosses");
           losses.textContent ="Losses :" + "" + numLosses;
 
-          totalGuessed++;
-          var totals = document.getElementById("totalGuessed");
-          totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+          //totalGuessed++;
+          //var totals = document.getElementById("totalGuessed");
+          //totals.textContent ="Your Guess So far:"+ ""+ totalGuessed;
+
+          numTrialsRemaining--;
+          var numRemaining =document.getElementById("guessLeft");
+          numRemaining.textContent="Guess Left:"+ ""+ numTrialsRemaining;
     }
 
 
 }
 
-}
+
  
         </script>
     </body>
