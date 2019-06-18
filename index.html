@@ -67,11 +67,23 @@ document.onkeyup = function (event){
     var yourGuess = event.key;
     //console.log(yourGuess);
     yourGuessSoFar.push(yourGuess);
-    txt="Your Guesses So Far :" + yourGuessSoFar+ ",";
+    //txt="Your Guesses So Far :" + yourGuessSoFar+ ",";
+   // document.getElementById("yourGuesses").innerHTML = txt;
+    //resetting the number of guesses so far
+    if(numTrialsRemaining==10 || numTrialsRemaining==0){
+        yourGuessSoFar=[];
+    txt="Your Guesses So Far :" + yourGuessSoFar;
     document.getElementById("yourGuesses").innerHTML = txt;
-    
-    
 
+    }else{
+        txt="Your Guesses So Far :" + yourGuessSoFar+ ",";
+    document.getElementById("yourGuesses").innerHTML = txt;
+
+
+
+    }
+    
+///
     var psychicThinking = psychicChoices[Math.floor(Math.random() * psychicChoices.length)];
     if (yourGuess === psychicThinking){
         //this is a win
