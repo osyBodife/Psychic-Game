@@ -13,7 +13,7 @@
 
         <link href="assets/css/style.css" type="text/css" rel="stylesheet">
 
-    <script src="assets/javascript/games.js"> </script>  
+    
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -23,7 +23,7 @@
 
 <div id="wrapper">
 <h2> The Psychic Game</h2>
-<div id="psychic"></div>
+<div id="psychic"  onkeyup="event()"></div>   
 
 <p id="numWins">Wins:</p>
 
@@ -36,16 +36,10 @@
 
 </div>
 
-
-
-
-
-
-
-
         
         
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
+ 
 var psychicChoices = ["a", "b", "c","d", "e", "f","g","h","i","j"]; 
 var yourGuess;
 var numWins=0;
@@ -62,15 +56,16 @@ var text = document.getElementById("psychic");
     
     var trials=0;
     var txt;    
-    
+     
 document.onkeyup = function (event){
+    //function psychicGame(){
     var yourGuess = event.key;
     //console.log(yourGuess);
     yourGuessSoFar.push(yourGuess);
     //txt="Your Guesses So Far :" + yourGuessSoFar+ ",";
    // document.getElementById("yourGuesses").innerHTML = txt;
     //resetting the number of guesses so far
-    if(numTrialsRemaining==10 || numTrialsRemaining==0){
+    if(numTrialsRemaining==11 || numTrialsRemaining==0){
         yourGuessSoFar=[];
     txt="Your Guesses So Far :" + yourGuessSoFar;
     document.getElementById("yourGuesses").innerHTML = txt;
@@ -241,6 +236,8 @@ if(numLosses==10){
         
 }
  
-        </script>
+ 
+        </script> -->
+        <script src="assets/javascript/games.js"> </script>  
     </body>
 </html>
